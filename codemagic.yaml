@@ -1,12 +1,32 @@
 workflows:
-  android-build:
-    name: Build APK
+  dogerat-android:
+    name: Build DogeRat APK
     environment:
+      # Usando JDK suportado pelo Codemagic
+      java: openjdk11
+      # Configuração do Android SDK do Codemagic
+      android:
+        api-level: 34
+        build-tools: 34.0.0
       vars:
-        JAVA_HOME: /usr/lib/jvm/java-11-openjdk-amd64  # ajuste se precisar
-        ANDROID_HOME: /root/android-sdk                # ajuste para o SDK do Codemagic
+        # Se o seu projeto precisar de variáveis extras, defina aqui
+        # ANDROID_HOME será definido automaticamente pelo Codemagic
+        GRADLE_USER_HOME: $CM_CACHE_DIR/gradle
     scripts:
+      # Limpar builds antigos
+      - name: Clean build
+        script: ./gradlew clean
+
+      # Compilar APK debug
       - name: Build Debug APK
         script: ./gradlew assembleDebug
+
     artifacts:
-      - app/build/outputs/apk/debug/app-debug.apk
+      # Caminho do APK gerado. Ajuste caso seu módulo principal seja outro
+      - APPS&Soucrce-Code/source\ code/apk\ src\ code\ v3\(Kotlin\)/app/build/outputs/apk/debug/app-debug.apk
+
+    publishing:
+      # Habilitar download do APK gerado
+      email:
+        recipients:
+          - jrdlssmandi@gmail.com
