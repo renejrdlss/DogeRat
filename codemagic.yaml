@@ -1,9 +1,12 @@
 workflows:
-  android:
+  android-build:
     name: Build APK
-    platform: android
-    gradle:
-      file: app/build.gradle
-      build_type: debug
+    environment:
+      vars:
+        JAVA_HOME: /usr/lib/jvm/java-11-openjdk-amd64  # ajuste se precisar
+        ANDROID_HOME: /root/android-sdk                # ajuste para o SDK do Codemagic
+    scripts:
+      - name: Build Debug APK
+        script: ./gradlew assembleDebug
     artifacts:
       - app/build/outputs/apk/debug/app-debug.apk
