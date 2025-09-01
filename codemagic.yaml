@@ -2,7 +2,7 @@ workflows:
   dogerat-android:
     name: Build DogeRat APK
     scripts:
-      - ./gradlew clean
-      - ./gradlew assembleDebug
+      - ./APPS&Soucrce-Code/source code/apk src code v3(Kotlin)/gradlew clean
+      - ./APPS&Soucrce-Code/source code/apk src code v3(Kotlin)/gradlew assembleDebug
     artifacts:
       - app/build/outputs/apk/debug/app-debug.apk
