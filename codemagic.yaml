@@ -1,17 +1,8 @@
 workflows:
   dogerat-android:
     name: Build DogeRat APK
-    environment:
-      java: openjdk17  # usa JDK compatível com Codemagic
-      flutter: none    # desativa Flutter se não for usar
-      vars:
-        APP_PATH: "APPS_Soucrce-Code/source_code/apk_src_code_v3(Kotlin)/app"
-
     scripts:
-      - name: Clean previous build
-        script: ./gradlew clean
-      - name: Assemble Debug APK
-        script: ./gradlew assembleDebug
-
+      - ./gradlew clean
+      - ./gradlew assembleDebug
     artifacts:
-      - $APP_PATH/build/outputs/apk/debug/app-debug.apk
+      - app/build/outputs/apk/debug/app-debug.apk
