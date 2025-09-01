@@ -1,0 +1,9 @@
+workflows:
+  android:
+    name: Build APK
+    platform: android
+    gradle:
+      file: app/build.gradle
+      build_type: debug
+    artifacts:
+      - app/build/outputs/apk/debug/app-debug.apk
