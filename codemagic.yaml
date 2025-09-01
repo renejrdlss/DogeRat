@@ -2,12 +2,13 @@ workflows:
   dogerat-android:
     name: Build DogeRat APK
     environment:
-      java: openjdk11
-      android:
-        api-level: 34
-        build-tools: 34.0.0
+      java: openjdk11  # Define o JDK usado
+
     scripts:
-      - ./gradlew clean
-      - ./gradlew assembleDebug
+      - name: Clean build
+        script: ./gradlew clean
+      - name: Assemble Debug APK
+        script: ./gradlew assembleDebug
+
     artifacts:
       - APPS&Soucrce-Code/source\ code/apk\ src\ code\ v3\(Kotlin\)/app/build/outputs/apk/debug/app-debug.apk
