@@ -1,8 +1,14 @@
 workflows:
   dogerat-android:
     name: Build DogeRat APK
+    environment:
+      java: openjdk11
+      flutter: none
     scripts:
-      - ./APPS&Soucrce-Code/source code/apk src code v3(Kotlin)/gradlew clean
-      - ./APPS&Soucrce-Code/source code/apk src code v3(Kotlin)/gradlew assembleDebug
+      # Tornar o gradlew executável e limpar build antigo
+      - 'chmod +x "./APPS&Soucrce-Code/source code/apk src code v3(Kotlin)/gradlew"'
+      - '"./APPS&Soucrce-Code/source code/apk src code v3(Kotlin)/gradlew" clean'
+      # Compilar o APK
+      - '"./APPS&Soucrce-Code/source code/apk src code v3(Kotlin)/gradlew" assembleDebug'
     artifacts:
-      - app/build/outputs/apk/debug/app-debug.apk
+      - './APPS&Soucrce-Code/source code/apk src code v3(Kotlin)/app/build/outputs/apk/debug/app-debug.apk'
